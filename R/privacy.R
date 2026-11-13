@@ -17,7 +17,7 @@ forbidden_columns <- c(
   "pio_email", "pio_phone", "payment_ref", "payment_reference"
 )
 
-## Public senders of the portals' own mail, needed to recognise their templates
+## Public senders of the portals' own mail, needed to recognize their templates
 allowed_addresses <- c(
   "rtisupport@tn.gov.in", "rtionline-kar@nic.in", "tsrtinoreply@gmail.com",
   "noreply-rtimh@mah.gov.in", "noreply-dopt@gov.in"
