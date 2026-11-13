@@ -38,7 +38,7 @@ add_date <- function(applications, ev, name) {
     dplyr::rename(!!name := value)
 }
 
-## The first acknowledgement, and which message gave the first response
+## The first acknowledgment, and which message gave the first response
 ack <- events |>
   dplyr::filter(kind %in% c("filing_ack", "filing_ack_tg")) |>
   dplyr::group_by(app_id) |>
@@ -108,7 +108,7 @@ status <- assignments |>
   dplyr::left_join(count_docs("rti responses", "n_reply_pdfs"), by = "app_id") |>
   dplyr::left_join(count_docs("Filed_RTI", "n_receipts"), by = "app_id") |>
   dplyr::mutate(
-    ## Filed means a real registration number on the sheet or a portal acknowledgement.
+    ## Filed means a real registration number on the sheet or a portal acknowledgment.
     ## A note typed into the number cell does not count.
     filed = as.integer(dplyr::coalesce(reg_cell == "number", FALSE) | !is.na(ack_date)),
     filing_date = dplyr::if_else(filed == 1L, dplyr::coalesce(ack_date, sheet_filing_date), as.Date(NA)),

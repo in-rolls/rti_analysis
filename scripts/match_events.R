@@ -104,7 +104,7 @@ reg_by_app <- setNames(register$reg_no, register$app_id)
 person_by_app <- setNames(register$person, register$app_id)
 people <- unique(register$person)
 
-# 1. Acknowledgements: registration number, else the authority name the portal printed ----
+# 1. Acknowledgments: registration number, else the authority name the portal printed ----
 for (i in which(emails$kind == "filing_ack")) {
   f <- emails$fields[[i]]
   reg <- dplyr::coalesce(f$reg_no, "")
@@ -160,7 +160,7 @@ for (i in which(emails$kind %in% status_kinds & !nzchar(links$app_id))) {
   if (length(hits) > 0) assign_event(i, hits[[1]], "reg_no", "high")
 }
 
-# 4. Telangana acknowledgements carry no number: match on the filing time the RA recorded ----
+# 4. Telangana acknowledgments carry no number: match on the filing time the RA recorded ----
 tg_rows <- register |> dplyr::filter(stringr::str_starts(app_id, "TG"), !is.na(sheet_filing_at))
 used <- character()
 for (i in which(emails$kind == "filing_ack_tg")) {

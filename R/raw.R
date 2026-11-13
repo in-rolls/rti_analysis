@@ -59,7 +59,7 @@ rti_words_re <- paste0(
 )
 
 # Text helpers ----
-## Undo the portals' non-breaking-space damage and normalise whitespace within lines
+## Undo the portals' non-breaking-space damage and normalize whitespace within lines
 clean_text <- function(x) {
   x <- ifelse(is.null(x) || is.na(x), "", x)
   x <- stringr::str_replace_all(x, "\r\n?", "\n")
@@ -153,7 +153,7 @@ extract_first_registration <- function(text) {
 }
 
 # Classify one message ----
-## Returns kind, portal state and the fields that kind carries. Anything unrecognised is kept as
+## Returns kind, portal state and the fields that kind carries. Anything unrecognized is kept as
 ## pio_email or other rather than dropped.
 classify_email <- function(rec) {
   from <- extract_email_sender(rec$from)
